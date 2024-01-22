@@ -1,0 +1,12 @@
+[
+    { "nom": "Jake", "atac": 90, "defensa": 80, "velocitat": 10, "salut": 100, "imatge": "jake.png" },
+    { "nom": "Finn", "atac": 85, "defensa": 75, "velocitat": 9, "salut": 100, "imatge": "finn.png" },
+    { "nom": "Rey Hielo", "atac": 70, "defensa": 60, "velocitat": 8, "salut": 100, "imatge": "reyhielo.png" },
+    { "nom": "Princesa Chicle", "atac": 75, "defensa": 70, "velocitat": 7, "salut": 100, "imatge": "princesachicle.png" },
+    { "nom": "Marceline", "atac": 88, "defensa": 82, "velocitat": 9, "salut": 100, "imatge": "marceline.png" },
+    { "nom": "Limoncio", "atac": 86, "defensa": 88, "velocitat": 8, "salut": 100, "imatge": "limoncio.png" },
+    { "nom": "Princesa Bultos", "atac": 20, "defensa": 30, "velocitat": 5, "salut": 100, "imatge": "princesabultos.png" },
+    { "nom": "Beemo", "atac": 78, "defensa": 75, "velocitat": 7, "salut": 100, "imatge": "bmo.png" },
+    { "nom": "Lady Arcoiris", "atac": 87, "defensa": 80, "velocitat": 9, "salut": 100, "imatge": "ladyarcoiris.png" },
+    { "nom": "Gunter", "atac": 92, "defensa": 85, "velocitat": 8, "salut": 100, "imatge": "gunter.png"}
+]

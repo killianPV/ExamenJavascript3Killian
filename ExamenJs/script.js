@@ -2,6 +2,8 @@ let jugador1 = [];
 let jugador2 = [];
 let torn = 1;  // 1 para jugador1, 2 para jugador2
 
+//Inicia una solicitud para obtener el contenido del archivo JSON "personajes.json". 
+//La función fetch devuelve una promesa que se resuelve con la respuesta a la solicitud HTTP.
 fetch('personajes.json')
     .then(response => response.json())
     .then(data => {
@@ -13,6 +15,10 @@ fetch('personajes.json')
     })
     .catch(error => console.error('Error al cargar el archivo JSON:', error));
 
+
+//Recibe un identificador de jugador (jugadorId) y una lista de cartas (cartes). 
+//Crea elementos HTML para cada carta y los agrega al contenedor del jugador correspondiente. 
+//También asigna un evento de clic a cada carta que llama a la función seleccionaCarta.
 function renderitzaCartes(jugadorId, cartes) {
     const jugadorElement = document.getElementById(jugadorId);
     jugadorElement.innerHTML = `<h2>${jugadorId === 'jugador1' ? 'Jugador 1' : 'Jugador 2'}</h2>`;
@@ -35,6 +41,9 @@ function renderitzaCartes(jugadorId, cartes) {
     });
 }
 
+
+//Marca la carta seleccionada por un jugador al hacer clic. 
+//Quita la clase 'seleccionada' de todas las cartas y luego agrega la clase 'seleccionada' a la carta específica clicada.
 function seleccionaCarta(jugadorId, carta) {
     const jugadorElement = document.getElementById(jugadorId);
     const cartes = jugadorElement.getElementsByClassName('carta');
@@ -54,6 +63,11 @@ function seleccionaCarta(jugadorId, carta) {
     }
 }
 
+
+//Inicia el combate entre las cartas de ambos jugadores. Utiliza un intervalo que se ejecuta cada 2 segundos para simular turnos. 
+//Dentro del intervalo, se obtienen las cartas seleccionadas de ambos jugadores y 
+//se realiza la comparación de velocidades para determinar quién ataca primero. 
+//Luego, se llama a la función combat para realizar el ataque.
 function iniciaCombat() {
     const interval = setInterval(() => {
         const cartaJugador1 = getCartaSeleccionada('jugador1');
@@ -75,6 +89,8 @@ function iniciaCombat() {
     }, 2000); // Intervalo de 2 segundos (puedes ajustar según tu preferencia)
 }
 
+
+//Obtiene la carta seleccionada por un jugador según la clase 'seleccionada'. Devuelve la información de la carta seleccionada.
 function getCartaSeleccionada(jugadorId) {
     const cartaSeleccionada = document.getElementById(jugadorId).getElementsByClassName('seleccionada')[0];
     if (cartaSeleccionada) {
@@ -84,6 +100,9 @@ function getCartaSeleccionada(jugadorId) {
     return null;
 }
 
+
+//Comprueba si uno de los jugadores ha perdido todas sus cartas
+//(salud <= 0) y muestra un mensaje de ganador. Si no hay ganador, no realiza ninguna acción adicional.
 function determinaGanador() {
     const jugadoresSinSalud = {
         jugador1: jugador1.every(carta => carta.salut <= 0),
@@ -103,6 +122,8 @@ function determinaGanador() {
 }
 
 
+//Simula un combate entre dos cartas. Calcula el daño basado en la diferencia entre el ataque y la defensa, 
+//reduce la salud del defensor y muestra mensajes de resultado. Si la salud del defensor llega a cero, reinicia el juego.
 function combat(carta1, carta2) {
     const atacant = torn === 1 ? carta1 : carta2;
     const defensor = torn === 1 ? carta2 : carta1;
@@ -123,6 +144,8 @@ function combat(carta1, carta2) {
     }
 }
 
+//Reinicia el juego. Restablece el estado de las variables, 
+//limpia los contenedores de cartas en HTML y vuelve a cargar y mostrar cartas aleatorias para ambos jugadores.
 function reiniciaJoc() {
     torn = 1;
     jugador1 = [];
